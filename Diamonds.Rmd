@@ -1,0 +1,40 @@
+---
+title: "Diamonds"
+author: "R Welsh"
+date: "2024-09-22"
+output:
+  pdf_document: default
+  html_document: default
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## Diamonds: Max Price Per Cut
+
+## Setting Up the Enviroment 
+notes: loading the dataset "diamonds" and the library "tidyverse" 
+
+```{r }
+library(tidyverse)
+data("diamonds")
+view(diamonds)
+```
+
+
+## Then I found the Max Price per cut using the aggragate function. 
+
+``` {r }
+max_price_per_cut <- aggregate(price ~ cut, data = diamonds, max)
+```
+
+## Then I presented the results in a bar chart format using colour as a visualisation to make the values more clear
+
+``` {r }
+ggplot(data = max_price_per_cut) + geom_col(mapping = aes(x = cut, y = price, fill = cut))
+
+``` 
+
+## As shown in the visualisation all the max prices are the same bar the fair cut
+
